@@ -47,4 +47,4 @@ const apiProxy = proxy("/", {
   target: "https://www.easy-mock.com/",
   changeOrigin: true
 }); //将请求转发
-app.use("/api/*", apiProxy); //全目录下的都是用代理
+app.use("/*", apiProxy); //全目录下的都是用代理
