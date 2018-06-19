@@ -12,14 +12,27 @@ module.exports = merge(baseConfig, {
     path.resolve(process.cwd(), "src/index.js")
   ],
   module: {
-    rules: [{
+    rules: [
+      {
       test: /\.css$/,
       exclude: /node_modules/,
       use: [
         "style-loader",
         "css-loader"
       ]
-    } ]
+    },
+    {
+        //处理自己的scss/sass文件
+        test: /\.(scss|sass)$/,
+        exclude: /node_modules/,
+        use: [
+          "style-loader",
+          { loader: "css-loader", options: { importLoaders: 1 } },
+          "postcss-loader",
+          "sass-loader"
+        ]
+      }
+   ]
   },
   plugins: [
     new HtmlWebpackPlugin({
