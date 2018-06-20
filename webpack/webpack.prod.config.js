@@ -16,6 +16,7 @@ const WebpackParallelUglifyPlugin = require("webpack-parallel-uglify-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSPlugin = require("optimize-css-assets-webpack-plugin");
 const PurifyCSSPlugin = require("purifycss-webpack");
+const postcssPresetEnv = require('postcss-preset-env');
 
 module.exports = merge(baseConfig, {
   entry: {
@@ -60,7 +61,20 @@ module.exports = merge(baseConfig, {
               importLoaders: 1
             }
           },
-          "postcss-loader",
+          {
+            loader: "postcss-loader",
+            options: {
+              autoprefixer: true || {
+                /*自己的配置*/
+              },
+              ident: 'postcss',
+              plugins: () => [
+                postcssPresetEnv({
+                  browsers: 'last 2 versions'
+                })
+              ]
+            }
+          },
           "sass-loader"
         ]
       }, {

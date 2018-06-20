@@ -28,7 +28,14 @@ module.exports = merge(baseConfig, {
         use: [
           "style-loader",
           { loader: "css-loader", options: { importLoaders: 1 } },
-          "postcss-loader",
+          {
+            loader: "postcss-loader",
+            options: {
+              autoprefixer: true || {
+                /*自己的配置*/
+              }
+            }
+          },
           "sass-loader"
         ]
       }
