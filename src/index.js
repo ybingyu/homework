@@ -2,13 +2,14 @@ import './css/index.scss';
 
 import React, { Component } from "react";
 import { render } from "react-dom";
+import App from './App';
 
 
-class App extends Component {
+/* class App extends Component {
   render() {
     return <div>测试</div>;
   }
-}
+} */
 
 const DOM = document.getElementById("app");
 
